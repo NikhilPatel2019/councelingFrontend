@@ -1,0 +1,25 @@
+
+.main-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 15px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 15px ;
+}
+
+.client-dashboard-buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.client-btn{
+        margin: 10px;
+        text-decoration: none;
+        border: none;
+        background: none;
+        font-weight: 500;
+        color: #039be5;
+}

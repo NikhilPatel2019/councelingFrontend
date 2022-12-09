@@ -1,0 +1,88 @@
+.create{
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 15px;
+    /* height: 30px; */
+    background-color: #0000004b;
+    color: #0e0e10;
+    padding: 10px 15px 10px 15px;
+    width: 80px;
+}
+.create:hover{
+    background-color: #00000070;
+}
+
+.advance-filer-main{
+    margin: 10px;
+}
+
+.advance-filter-input{
+    opacity: 1 !important; 
+    margin-right: 20px !important;
+    margin-top: 7px !important;
+}
+
+.filter-menu-input-label{
+    margin: 20px !important;
+}
+
+.dashboard-menus-main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 90px;
+}
+
+.menubar-searchbar-main{
+    margin: 20px auto;
+    width: 100% ;
+    text-align: center;
+}
+
+.menubar-searchbar-main .search-bar-input{
+    width: 70% !important;
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 25%) !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D6D6D6 !important;
+    border-radius: 5px !important;
+    padding-left: 10px !important;
+}
+
+.advance-filter{
+    cursor:  pointer;
+}
+
+.advance-filter-active{
+    color: #039be5 ;
+    cursor: pointer;
+}
+
+.counciler-counciler{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.counciler-static-btn{
+    margin-top: 0;
+    border: none;
+    border-left: 1px solid;
+    background: none;
+    padding-left: 35px;
+}
+
+.counclier-static-left{
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    height: 32px;
+}
+
+.counciler-static-arror-icon{
+    margin: 5px;
+}

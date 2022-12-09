@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Landing from "./components/layout/Landing";
+import Register from "./components/auth/Register";
+// import Login from "./components/auth/Login";
+import Login from "./components/auth/LoginNew";
+import Home from './components/dashboard/Home';
+import Clients from './components/dashboard/Clients';
+import Followup from './components/dashboard/Followup';
+// import ClientCreate from './components/client_ui/clientCreate';
+import ClientCreate from './components/client_ui/clientCreateNew';
+import Appointments from './components/dashboard/appointments';
+import AppointmentCreate from './components/appointment_ui/appointmentCreate';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Navbar />
+
+            <Routes>
+              <Route exact path="/" element={<Landing />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/home" element={<Home />} />
+              <Route exact path="/clients" element={<Clients />} />
+              <Route exact path="/followup" element={<Followup />} />
+              <Route exact path="/clientCreate" element={<ClientCreate />} />
+              <Route exact path="/appointments" element={<Appointments />} />
+              <Route exact path="/appointmentCreate" element={<AppointmentCreate />} />
+            </Routes>
+
+        </div>
+      </Router>
+    );
+  }
 }
-
 export default App;
