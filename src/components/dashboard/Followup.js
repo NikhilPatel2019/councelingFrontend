@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import bc from '../layout/Images/i1.png';
 import { Link } from 'react-router-dom';
+import FollowupDashboard from '../followup_ui/followupDashboard'
 import "./Home.css";
 import "./Followup.css";
 
@@ -37,6 +38,7 @@ class Followup extends Component {
                 </div>
                 <div>
                 
+                <FollowupDashboard />
                 </div>
             </div>
         )

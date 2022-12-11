@@ -2,6 +2,24 @@ import React, { Component, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate, useLocation } from "react-router-dom";
+// import Box from '@mui/material/Box';
+// import { Button } from "@mui/material";
+
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+// import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme();
 
 const Client = (props) =>{
   const navigate = useNavigate();
@@ -69,7 +87,102 @@ const Client = (props) =>{
     };
 
     return (
-        <div className="container">
+      <>
+      
+           <Box
+                        sx={{
+                        p: 1,
+                        m: 1,
+                        mt: 15,
+                        mb:0,
+                        bgcolor: 'background.paper',
+                        borderRadius: 1,
+                        }}
+                    >
+                     <Button variant="default" component={Link} to="/clients">
+                        <i className="material-icons left">keyboard_backspace</i>
+                        Back to home
+                      </Button> 
+            </Box>
+            <ThemeProvider theme={theme}>
+              <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Typography component="h1" variant="h5">
+                    Create Client
+                  </Typography>
+                  <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="firstName"
+                      label="First Name"
+                      name="firstName"
+                      autoComplete="firstName"
+                      autoFocus
+                      onChange={(e)=> setFirstName(e.target.value)}
+                      value={firstName}
+                    />
+                    <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="lastName"
+                      label="Last Name"
+                      type="lastName"
+                      id="lastName"
+                      autoComplete="lastName"
+                      onChange={(e)=> setLastName(e.target.value)}
+                      value={lastName}
+                    />
+
+                  <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="title"
+                      label="Title"
+                      type="title"
+                      id="title"
+                      autoComplete="title"
+                      onChange={(e)=> setTitle(e.target.value)}
+                      value={title}
+                    />
+
+                  <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="email"
+                      label="Email"
+                      type="email"
+                      id="email"
+                      autoComplete="email"
+                      onChange={(e)=> setEmail(e.target.value)}
+                      value={email}
+                    />
+              
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 3, mb: 2 }}
+                    >
+                      Create
+                    </Button>
+                   
+                  </Box>
+                </Box>
+              </Container>
+            </ThemeProvider>
+        {/* <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
@@ -136,7 +249,8 @@ const Client = (props) =>{
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
+      </>
     )
 }
 export default Client;

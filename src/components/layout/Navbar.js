@@ -1,39 +1,194 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import bc from './Images/i1.png';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="navbar-fixed">
-                <div id="navbar">
-                    <div class="left-section">
-                        <Link to='/'>
-                            <img src={bc} alt="pic" />
-                        </Link>
-                    </div>
-                    <div class="right-section">
-                        <ul>
-                            <li>
-                                <Link to="/home">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/clients">Clients</Link>
-                            </li>
-                            <li>
-                                <Link to="/appointments">Appointments</Link>
-                            </li>
-                            <li>
-                                <Link to="/">Reminders</Link>
-                            </li>
-                            <li>
-                                <Link to="/">Account</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-      </div>
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+// interface Props {
+//     /**
+//      * Injected by the documentation to work in an iframe.
+//      * You won't need it on your project.
+//      */
+//     window?: () => Window;
+//   }
+  
+  const drawerWidth = 240;
+  const navItems = ['Home', 'About', 'Contact'];
+
+const Navbar =  (props) => {
+    // const { window } = props;
+    const [mobileOpen, setMobileOpen] = useState(false);
+  
+    const handleDrawerToggle = () => {
+      setMobileOpen(!mobileOpen);
+    };
+  
+    const drawer = (
+      <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+        <Typography variant="h6" sx={{ my: 2 }}>
+                {/* <Link to='/'> */}
+                    <img src={bc} alt="pic" style={{ width: "95%"}} />
+                 {/* </Link> */}
+        </Typography>
+        <Divider />
+        <List>
+          {navItems.map((item) => (
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     );
-  }
+  
+    // const container = window !== undefined ? () => window().document.body : undefined;
+  
+    return (
+        <>
+            <Box sx={{ display: 'flex' }}>
+                <AppBar component="nav" sx={{background: "#fff"}}>
+                    <Toolbar>
+                    <IconButton
+                        color="#000"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                    >
+                        <Link to='/'>
+                           <img src={bc} alt="pic" />
+                        </Link>
+                    </Typography>
+                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                        {/* {navItems.map((item) => ( */}
+                        <Button key={"Home"} sx={{ color: '#000', fontWeight: 'bold' }} component={Link} to="/home">
+                            Home
+                        </Button>
+                        <Button key={"Clients"} sx={{ color: '#000', fontWeight: 'bold' }} component={Link} to="/clients">
+                            Clients
+                        </Button>
+                        <Button key={"Appointments"} sx={{ color: '#000', fontWeight: 'bold' }} component={Link} to="/appointments">
+                           Appointments
+                        </Button>
+                        <Button key={"Follow Up"} sx={{ color: '#000', fontWeight: 'bold' }} component={Link} to="/followup">
+                            Follow Up
+                        </Button>
+                        <Button key={"Account"} sx={{ color: '#000', fontWeight: 'bold' }} component={Link} to="/">
+                            Account
+                        </Button>
+                        {/* ))} */}
+                    </Box>
+                    </Toolbar>
+                </AppBar>
+                <Box component="nav">
+                    <Drawer
+                    // container={container}
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                    }}
+                    sx={{
+                        display: { xs: 'block', sm: 'none' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                    >
+                    {drawer}
+                    </Drawer>
+                </Box>
+                {/* <Box component="main" sx={{ p: 3 }}>
+                    <Toolbar />
+                    <Typography>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
+                    fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
+                    aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
+                    cum quibusdam sed quae, accusantium et aperiam? Quod itaque exercitationem,
+                    at ab sequi qui modi delectus quia corrupti alias distinctio nostrum.
+                    Minima ex dolor modi inventore sapiente necessitatibus aliquam fuga et. Sed
+                    numquam quibusdam at officia sapiente porro maxime corrupti perspiciatis
+                    asperiores, exercitationem eius nostrum consequuntur iure aliquam itaque,
+                    assumenda et! Quibusdam temporibus beatae doloremque voluptatum doloribus
+                    soluta accusamus porro reprehenderit eos inventore facere, fugit, molestiae
+                    ab officiis illo voluptates recusandae. Vel dolor nobis eius, ratione atque
+                    soluta, aliquam fugit qui iste architecto perspiciatis. Nobis, voluptatem!
+                    Cumque, eligendi unde aliquid minus quis sit debitis obcaecati error,
+                    delectus quo eius exercitationem tempore. Delectus sapiente, provident
+                    corporis dolorum quibusdam aut beatae repellendus est labore quisquam
+                    praesentium repudiandae non vel laboriosam quo ab perferendis velit ipsa
+                    deleniti modi! Ipsam, illo quod. Nesciunt commodi nihil corrupti cum non
+                    fugiat praesentium doloremque architecto laborum aliquid. Quae, maxime
+                    recusandae? Eveniet dolore molestiae dicta blanditiis est expedita eius
+                    debitis cupiditate porro sed aspernatur quidem, repellat nihil quasi
+                    praesentium quia eos, quibusdam provident. Incidunt tempore vel placeat
+                    voluptate iure labore, repellendus beatae quia unde est aliquid dolor
+                    molestias libero. Reiciendis similique exercitationem consequatur, nobis
+                    placeat illo laudantium! Enim perferendis nulla soluta magni error,
+                    provident repellat similique cupiditate ipsam, et tempore cumque quod! Qui,
+                    iure suscipit tempora unde rerum autem saepe nisi vel cupiditate iusto.
+                    Illum, corrupti? Fugiat quidem accusantium nulla. Aliquid inventore commodi
+                    reprehenderit rerum reiciendis! Quidem alias repudiandae eaque eveniet
+                    cumque nihil aliquam in expedita, impedit quas ipsum nesciunt ipsa ullam
+                    consequuntur dignissimos numquam at nisi porro a, quaerat rem repellendus.
+                    Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
+                    dolores sunt inventore perferendis, aut sapiente modi nesciunt.
+                    </Typography>
+                </Box> */}
+            </Box>
+        </>
+    //   <div className="navbar-fixed">
+    //             <div id="navbar">
+    //                 <div className="left-section">
+    //                     <Link to='/'>
+    //                         <img src={bc} alt="pic" />
+    //                     </Link>
+    //                 </div>
+    //                 <div className="right-section">
+    //                     <ul>
+    //                         <li>
+    //                             <Link to="/home">Home</Link>
+    //                         </li>
+    //                         <li>
+    //                             <Link to="/clients">Clients</Link>
+    //                         </li>
+    //                         <li>
+    //                             <Link to="/appointments">Appointments</Link>
+    //                         </li>
+    //                         <li>
+    //                             <Link to="/followup">Follow Up</Link>
+    //                         </li>
+    //                         <li>
+    //                             <Link to="/">Reminders</Link>
+    //                         </li>
+    //                         <li>
+    //                             <Link to="/">Account</Link>
+    //                         </li>
+    //                     </ul>
+    //                 </div>
+    //             </div>
+    //   </div>
+    );
+  
 }
 export default Navbar;
